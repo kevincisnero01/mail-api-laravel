@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ForgotPasswordController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -8,6 +9,8 @@ use Illuminate\Support\Facades\Route;
 Route::post('register',[AuthController::class,'register'])->name('register');
 
 Route::post('login',[AuthController::class,'login'])->name('login');
+
+Route::post('/forgot-password',[ForgotPasswordController::class,'send_email'])->middleware('guest')->name('password.email');
 
 
 // === PRIVATE ===
