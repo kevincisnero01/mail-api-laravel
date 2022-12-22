@@ -21,7 +21,7 @@ class AuthController extends Controller
         $user = User::create($data);
 
         return response()->json([
-            'message' => 'Registro de usuario con exito',
+            'message' => 'Registro de usuario con éxito',
             'data' => $user,
         ]);
     }
@@ -37,7 +37,7 @@ class AuthController extends Controller
         if(Auth::attempt($credentials))
         {
             return response()->json([
-                'message' => 'Inicio de sesión con exito',
+                'message' => 'Inicio de sesión con éxito',
                 'token' => $request->user()->createToken($request->email)->plainTextToken
             ]);
 
@@ -47,4 +47,15 @@ class AuthController extends Controller
             'message' => 'Las credenciales proporcionadas no coinciden con nuestros registros',
         ],401);
     }
+
+    public function logout(Request $request)
+    {
+        $request->user()->tokens()->delete();
+
+        return response()->json([
+            'message' => 'Cierre de sesión con éxito',
+        ]);
+    }
+
+
 }
