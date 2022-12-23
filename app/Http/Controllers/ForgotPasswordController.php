@@ -21,7 +21,7 @@ class ForgotPasswordController extends Controller
             $status = ['message' => __($status)];
         }else{
             $status = [
-                "message" => __("The given data was invalid."),
+                "message" => "Los datos proporcionados no son válidos",
                 'errors' => ['email' => __($status)],
             ];
         }
@@ -62,7 +62,7 @@ class ForgotPasswordController extends Controller
             $status = ['message' => __($status)];
         }else{
             $status = [
-                "message" => __("The given data was invalid."),
+                "message" => "Los datos proporcionados no son válidos",
                 'errors' => ['email' => __($status)],
             ];
         }
