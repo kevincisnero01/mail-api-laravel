@@ -27,7 +27,7 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
         ResetPassword::createUrlUsing(function ($user, string $token) {
-            return 'https://mail-api-laravel.test/reset-password/'.$token;
+            return 'http://mail-api-laravel.test/api/reset-password/'.$token;
         });
     }
 }

@@ -12,6 +12,9 @@ Route::post('login',[AuthController::class,'login'])->name('login');
 
 Route::post('/forgot-password',[ForgotPasswordController::class,'send_email'])->middleware('guest')->name('password.email');
 
+Route::get('/reset-password/{token}',[ForgotPasswordController::class,'get_token'])->middleware('guest')->name('password.reset');
+
+Route::post('/reset-password',[ForgotPasswordController::class,'reset_update'])->middleware('guest')->name('password.update');
 
 // === PRIVATE ===
 Route::middleware('auth:sanctum')->group(function () {
