@@ -18,15 +18,16 @@ class ForgotPasswordController extends Controller
         $status = Password::sendResetLink($credentials);
 
         if($status === Password::RESET_LINK_SENT){
-            $status = ['message' => __($status)];
-        }else{
-            $status = [
-                "message" => "Los datos proporcionados no son válidos",
-                'errors' => ['email' => __($status)],
-            ];
+            return response()->json([
+                'message' => __($status)
+            ]);
         }
 
-        return response()->json($status);
+        return response()->json([
+            "message" => "Los datos proporcionados no son válidos",
+            'errors' => ['email' => __($status)],
+        ],422);
+
     }
 
     public function get_token($token)
@@ -59,15 +60,16 @@ class ForgotPasswordController extends Controller
         );
 
         if($status === Password::PASSWORD_RESET){
-            $status = ['message' => __($status)];
-        }else{
-            $status = [
-                "message" => "Los datos proporcionados no son válidos",
-                'errors' => ['email' => __($status)],
-            ];
+            return response()->json([
+                'message' => __($status)
+            ]);
         }
 
-        return response()->json($status);
+        return response()->json([
+            "message" => "Los datos proporcionados no son válidos",
+            'errors' => ['email' => __($status)],
+        ],422);
+
     }
 
 }
